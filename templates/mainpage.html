@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{user.username}}</title>
+        <style>
+            .new:hover{
+                color:black ;
+                background-color: green;
+            }
+            span{
+                color: gold;
+            }
+               .new{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 16px;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: black
+        }
+        a{
+            text-decoration: none;
+        }
+            .name{
+                text-align: center;
+                font-size: 50px;
+                text-decoration: underline;
+            }
+            .add{
+                margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 16px;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: black
+            }
+            .add:hover{
+                color:black ;
+                background-color: red;
+            }
+            p{
+                color: white;
+                font-size: 15px;
+            }
+            body{
+                background-color: olive;
+            }
+        </style>
+    </head>
+    <body>
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+
+
+        {% if user.is_authenticated %}
+        <h1 class="name">Welcome <span>{{user.username}}</span></h1>
+        {% endif %}
+        <h3>Register your student below:</h3>
+        <form method="POST" action="{% url 'mainpage' %}">
+            {% csrf_token %}
+            <fieldset>
+                <label>First Name:</label>
+                <input type="text" name="firstname"/>
+            </fieldset>
+
+            <fieldset>
+                <label>Last Name:</label>
+                <input type="text" name="lastname"/>
+            </fieldset>
+
+
+
+            <fieldset>
+                <label>Address:</label>
+                <input type="text" name="address"/>
+            </fieldset>
+
+            <fieldset>
+                <label>Country of Residence:</label>
+                <input type="text" name="country"/>
+            </fieldset>
+
+            <fieldset>
+                <label>Email:</label>
+                <input type="email" name="email"/>
+            </fieldset>
+
+            <fieldset>
+                <label>Course:</label>
+                <input type="text" name="course"/>
+            </fieldset>
+
+            <fieldset>
+                <label>GPA:</label>
+                <input type="text" name="gpa"/>
+            </fieldset>
+
+            <fieldset>
+                <label>Mobile Number:</label>
+                <input type="text" name="mobile"/>
+            </fieldset>
+
+            <fieldset>
+                <label>Number:</label>
+                <input type="text" name="number"/>
+            </fieldset>
+
+            <input class="add" type="submit" value="Add student"/>
+        </form>
+
+        <a href="{% url 'data' %} "><button class="new">Existing Students</button></a>
+    </body>
+</html>

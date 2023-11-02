@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+    <style>
+        button{
+            
+            
+        }
+        form{
+           
+            
+            margin: 0 auto;
+            width: 100px;
+        }
+        body{
+            background-color: aqua;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 17px;
+        }
+        .new{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: 16px;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: black
+        }
+        a{
+            text-decoration: none;
+        }
+        .reg{
+            text-align: center;
+        }
+        .edit{
+            background-color: green;
+            color: white;
+            width: 70px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .delete{
+            background-color: red;
+            color: white;
+            width: 70px;
+            height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="reg">Your Registered Students:</h1>
+    <table border="3">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            
+            <th>Address</th>
+            <th>Country</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>GPA</th>
+            <th>Number</th>
+            <th>Mobile Number</th>
+            
+        </tr>
+        {% for student in all %}
+        <tr>
+            
+            <td>{{ student.firstname }}</td>
+            <td>{{ student.lastname }}</td>
+            
+            <td>{{ student.address }}</td>
+            <td>{{ student.country }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.course }}</td>
+            <td>{{ student.gpa }}</td>
+            <td>{{ student.number }}</td>
+            <td>{{ student.mobile }}</td>
+
+
+            <td>
+                <a href="{% url 'delete' student.id %}" onclick="return confirm('Are you sure you want to delete this item?');"><button class="delete">Delete</button></a>
+            </td>
+
+
+            <td><a href="{% url 'update' student.pk %}"><button class="edit">Edit</button></a></td>
+
+            
+        </tr>
+        
+        {% endfor %}
+
+    </table>
+
+   
+
+
+
+    <a href="{% url 'mainpage' %} "><button class="new">Add New Student</button></a>
+    <a href="{% url 'logout' %}"><button class="new">Log Out</button></a>
+   
+    
+
+
+</body>
+</html>

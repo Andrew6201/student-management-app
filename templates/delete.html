@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Delete</title>
+    <style>
+        button{
+            padding: 18px;
+            color: white;
+            background-color: red;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        p{
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Confirm Deletion</h1>
+    <p>Are you sure you want to delete the student record for {{ student.firstname }}?</p>
+    
+    <!-- Form to confirm deletion -->
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="confirm_delete" value="1">
+        <button type="submit">YES</button>
+        <a href="{% url 'data' %}"><button>NO</button></a>
+    </form>
+</body>
+</html>
